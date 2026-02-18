@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/core/utils/app_snackbars.dart';
 import 'package:fruits_hub_dashboard/core/widgets/custom_button.dart';
 import 'package:fruits_hub_dashboard/core/widgets/custom_text_form_field.dart';
+import 'package:fruits_hub_dashboard/features/add_product/domain/entities/add_product_input_entity.dart';
 import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/image_field.dart';
 import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/is_featured_product.dart';
 import 'package:gap/gap.dart';
@@ -38,7 +39,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   productCode = value!.toLowerCase();
                 },
                 hintText: 'Product Code',
-                keyboardType: TextInputType.number,
+                keyboardType: TextInputType.text,
               ),
               const Gap(12),
               CustomTextFormField(
@@ -80,6 +81,15 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   if (fileImage != null) {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
+                      final AddProductInputEntity productInputEntity =
+                          AddProductInputEntity(
+                            code: productCode!,
+                            name: productName!,
+                            description: productDescription!,
+                            price: productPrice!,
+                            image: fileImage!,
+                            isFeatured: isFeatured,
+                          );
                     } else {
                       autovalidateMode = AutovalidateMode.always;
                       setState(() {});
