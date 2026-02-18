@@ -21,30 +21,30 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
         child: Form(
           key: formKey,
           autovalidateMode: autovalidateMode,
-          child: const Column(
+          child: Column(
             children: [
-              CustomTextFormField(
+              const CustomTextFormField(
                 hintText: 'Product ID',
                 keyboardType: TextInputType.number,
               ),
-              Gap(12),
-              CustomTextFormField(
+              const Gap(12),
+              const CustomTextFormField(
                 hintText: 'Product Name',
                 keyboardType: TextInputType.text,
               ),
-              Gap(12),
-              CustomTextFormField(
+              const Gap(12),
+              const CustomTextFormField(
                 hintText: 'Product Price',
                 keyboardType: TextInputType.number,
               ),
-              Gap(12),
-              CustomTextFormField(
+              const Gap(12),
+              const CustomTextFormField(
                 maxLines: 5,
                 hintText: 'Product description',
                 keyboardType: TextInputType.text,
               ),
-              Gap(12),
-              ImageField(),
+              const Gap(12),
+              ImageField(onImagePicked: (image) {}),
             ],
           ),
         ),

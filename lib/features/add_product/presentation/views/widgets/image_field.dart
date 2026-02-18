@@ -1,14 +1,13 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:fruits_hub_dashboard/core/helpers/pick_image_from_storage.dart';
 import 'package:fruits_hub_dashboard/core/utils/app_snackbars.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class ImageField extends StatefulWidget {
-  const ImageField({super.key});
-
+  const ImageField({super.key, required this.onImagePicked});
+  final ValueChanged<File?> onImagePicked;
   @override
   State<ImageField> createState() => _ImageFieldState();
 }
@@ -58,6 +57,7 @@ class _ImageFieldState extends State<ImageField> {
                 child: IconButton(
                   onPressed: () {
                     setState(() => fileImage = null);
+                    widget.onImagePicked(fileImage);
                     AppSnackbars.showSuccess(context, message: "Image removed");
                   },
                   icon: const Icon(Icons.delete, color: Colors.red),
@@ -68,5 +68,12 @@ class _ImageFieldState extends State<ImageField> {
         ),
       ),
     );
+  }
+
+  Future<XFile?> pickImageFromStorage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    widget.onImagePicked(File(image!.path));
+    return image;
   }
 }
