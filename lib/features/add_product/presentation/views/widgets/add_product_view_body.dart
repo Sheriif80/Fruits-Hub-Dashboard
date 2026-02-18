@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/core/widgets/custom_text_form_field.dart';
 import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/image_field.dart';
+import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/is_featured_product.dart';
 import 'package:gap/gap.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -45,6 +46,8 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               ),
               const Gap(12),
               ImageField(onImagePicked: (image) {}),
+              const Gap(12),
+              IsFeautredProduct(onChecked: (value) {}),
             ],
           ),
         ),
