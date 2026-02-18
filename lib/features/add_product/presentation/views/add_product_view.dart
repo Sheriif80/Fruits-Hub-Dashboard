@@ -11,7 +11,7 @@ class AddProductView extends StatelessWidget {
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
         appBar: buildAppBar(title: 'Add Product'),
-        body: AddProductViewBody(),
+        body: const AddProductViewBody(),
       ),
     );
   }

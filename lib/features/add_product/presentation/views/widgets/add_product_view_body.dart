@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/core/widgets/custom_text_form_field.dart';
+import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/image_field.dart';
 import 'package:gap/gap.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -26,7 +27,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 hintText: 'Product ID',
                 keyboardType: TextInputType.number,
               ),
-              Gap(20),
+              Gap(12),
               CustomTextFormField(
                 hintText: 'Product Name',
                 keyboardType: TextInputType.text,
@@ -42,6 +43,8 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 hintText: 'Product description',
                 keyboardType: TextInputType.text,
               ),
+              Gap(12),
+              ImageField(),
             ],
           ),
         ),
