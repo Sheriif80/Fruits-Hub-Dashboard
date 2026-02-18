@@ -16,7 +16,7 @@ class DashboardViewBody extends StatelessWidget {
           CustomButton(
             text: "Add Data",
             onPressed: () {
-              GoRouter.of(context).push(AppRoutes.addProductView);
+              GoRouter.of(context).pushNamed(AppRoutes.addProductView);
             },
           ),
         ],

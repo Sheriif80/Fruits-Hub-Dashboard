@@ -1,5 +1,5 @@
 import 'package:fruits_hub_dashboard/core/routing/app_routes.dart';
-import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/add_product_view_body.dart';
+import 'package:fruits_hub_dashboard/features/add_product/presentation/views/add_product_view.dart';
 import 'package:fruits_hub_dashboard/features/dashboard/presentations/views/dashboard_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,7 +17,7 @@ class RouterGenerationConfig {
         path: AppRoutes.addProductView,
         name: AppRoutes.addProductView,
 
-        builder: (context, state) => const AddProductViewBody(),
+        builder: (context, state) => const AddProductView(),
       ),
     ],
   );
