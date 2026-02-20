@@ -19,8 +19,11 @@ class ProductsRepoImpl implements ProductsRepo {
         data: AddProductInputModel.fromEntity(addProductInputEntity).toMap(),
       );
       return right(null);
-    } catch (e) {
-      return left(ServerFailure("Failed to add product, details:[$e] "));
+    } catch (e, stackTrace) {
+      print("Firestore error: $e");
+      print(stackTrace);
+      rethrow;
+      // return left(ServerFailure("Failed to add product, details:[$e] "));
     }
   }
 }

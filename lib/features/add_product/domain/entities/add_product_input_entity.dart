@@ -13,9 +13,9 @@ class AddProductInputEntity {
     required this.code,
     required this.name,
     required this.description,
-    this.imageURL,
     required this.image,
     required this.price,
     required this.isFeatured,
+    this.imageURL,
   });
 }

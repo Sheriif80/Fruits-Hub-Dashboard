@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'storage_service.dart';
+import 'package:path/path.dart' as p;
 
 class SupabaseStorageService implements StorageService {
   final SupabaseClient _client;
@@ -11,17 +12,22 @@ class SupabaseStorageService implements StorageService {
   @override
   Future<String> uploadFile(File file, String path) async {
     try {
-      final bucketName = 'product-images';
+      final fileExtension = p.extension(file.path);
 
-      // upload
-      await _client.storage.from(bucketName).upload(path, file);
+      final fileName = "${DateTime.now().millisecondsSinceEpoch}$fileExtension";
 
-      // return public url
-      final publicUrl = _client.storage.from(bucketName).getPublicUrl(path);
+      final fullPath = "$path/$fileName";
 
-      return publicUrl;
-    } catch (e) {
-      throw Exception('Supabase upload failed: $e');
+      await _client.storage.from('product-images').upload(fullPath, file);
+      final String publicURL = _client.storage
+          .from('product-images')
+          .getPublicUrl(fullPath);
+
+      return publicURL;
+    } catch (e, stack) {
+      print(e);
+      print(stack);
+      rethrow;
     }
   }
 }

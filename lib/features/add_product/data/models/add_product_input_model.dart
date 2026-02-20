@@ -8,6 +8,7 @@ class AddProductInputModel extends AddProductInputEntity {
     required super.image,
     required super.price,
     required super.isFeatured,
+    required super.imageURL,
   });
 
   factory AddProductInputModel.fromEntity(
@@ -20,13 +21,14 @@ class AddProductInputModel extends AddProductInputEntity {
       image: addProductInputEntity.image,
       price: addProductInputEntity.price,
       isFeatured: addProductInputEntity.isFeatured,
+      imageURL: addProductInputEntity.imageURL,
     );
   }
   toMap() => {
     "code": code,
     "name": name,
     "description": description,
-    "image": image,
+    "imageURL": imageURL,
     "price": price,
     "isFeatured": isFeatured,
   };
