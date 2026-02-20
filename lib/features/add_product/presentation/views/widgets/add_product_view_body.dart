@@ -75,7 +75,11 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 },
               ),
               const Gap(12),
-              IsFeautredProduct(onChecked: (value) {}),
+              IsFeautredProduct(
+                onChecked: (value) {
+                  isFeatured = value;
+                },
+              ),
               const Gap(12),
               CustomButton(
                 text: "Add Product",

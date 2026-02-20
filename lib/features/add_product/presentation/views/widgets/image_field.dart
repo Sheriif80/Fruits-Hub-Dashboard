@@ -46,7 +46,9 @@ class _ImageFieldState extends State<ImageField> {
               height: 200,
               width: double.infinity,
               child: fileImage != null
-                  ? ClipRect(child: Image.file(fileImage!, fit: BoxFit.fill))
+                  ? ClipRect(
+                      child: Image.file(fileImage!, fit: BoxFit.fitHeight),
+                    )
                   : const Center(child: Icon(Icons.camera_alt, size: 50)),
             ),
             Visibility(
