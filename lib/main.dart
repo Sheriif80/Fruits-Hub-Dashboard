@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub_dashboard/core/routing/router_generation_config.dart';
 import 'package:fruits_hub_dashboard/core/services/get_it_service.dart';
+import 'package:fruits_hub_dashboard/core/services/observer.dart';
 import 'package:fruits_hub_dashboard/firebase_options.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -15,6 +17,7 @@ void main() async {
     anonKey: 'sb_publishable_5Isk1AEvZfiX-numcrTmxg_sTJP1MJJ',
   );
   setupGetIt();
+  Bloc.observer = AppBlocObserver();
   runApp(const MyApp());
 }
 
