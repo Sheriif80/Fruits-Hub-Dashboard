@@ -9,6 +9,7 @@ import 'package:fruits_hub_dashboard/features/add_product/domain/entities/add_pr
 import 'package:fruits_hub_dashboard/features/add_product/presentation/managers/cubits/add_product/add_product_cubit.dart';
 import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/image_field.dart';
 import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/is_featured_product.dart';
+import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/is_organic_product.dart';
 import 'package:gap/gap.dart';
 
 class AddProductViewBody extends StatefulWidget {
@@ -21,9 +22,11 @@ class AddProductViewBody extends StatefulWidget {
 class _AddProductViewBodyState extends State<AddProductViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late String? productCode, productName, productDescription;
-  late num? productPrice;
+  late num productPrice, avgRating;
   File? fileImage;
   bool isFeatured = false;
+  bool isOrganic = false;
+  late int expiryDateMonths, numberOfCalories, unitAmount, numberOfRatings;
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
@@ -68,6 +71,61 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 hintText: 'Product description',
                 keyboardType: TextInputType.text,
               ),
+
+              const Gap(12),
+              CustomTextFormField(
+                onSaved: (value) {
+                  expiryDateMonths = int.parse(value!);
+                },
+                hintText: ' Expiry Date in months',
+                keyboardType: TextInputType.number,
+              ),
+
+              const Gap(12),
+              CustomTextFormField(
+                onSaved: (value) {
+                  numberOfCalories = int.parse(value!);
+                },
+                hintText: 'Number of Calories',
+                keyboardType: TextInputType.number,
+              ),
+
+              const Gap(12),
+              CustomTextFormField(
+                onSaved: (value) {
+                  unitAmount = int.parse(value!);
+                },
+                hintText: 'Unit Amount',
+                keyboardType: TextInputType.number,
+              ),
+
+              const Gap(12),
+              CustomTextFormField(
+                onSaved: (value) {
+                  avgRating = num.parse(value!);
+                },
+                hintText: ' Average Rating',
+                keyboardType: TextInputType.number,
+              ),
+
+              const Gap(12),
+              CustomTextFormField(
+                onSaved: (value) {
+                  numberOfRatings = int.parse(value!);
+                },
+                hintText: ' Number of Ratings',
+                keyboardType: TextInputType.number,
+              ),
+
+              const Gap(12),
+              CustomTextFormField(
+                onSaved: (value) {
+                  productDescription = value;
+                },
+                hintText: 'Product description',
+                keyboardType: TextInputType.text,
+              ),
+
               const Gap(12),
               ImageField(
                 onImagePicked: (image) {
@@ -78,6 +136,12 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               IsFeautredProduct(
                 onChecked: (value) {
                   isFeatured = value;
+                },
+              ),
+              const Gap(12),
+              IsOrganicProduct(
+                onChecked: (value) {
+                  isOrganic = value;
                 },
               ),
               const Gap(12),
@@ -92,9 +156,15 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                             code: productCode!,
                             name: productName!,
                             description: productDescription!,
-                            price: productPrice!,
+                            price: productPrice,
                             image: fileImage!,
                             isFeatured: isFeatured,
+                            isOrganic: isOrganic,
+                            expiryDateMonths: expiryDateMonths,
+                            numberOfCalories: numberOfCalories,
+                            unitAmount: unitAmount,
+                            avgRating: avgRating,
+                            numberOfRatings: numberOfRatings,
                           );
                       BlocProvider.of<AddProductCubit>(
                         context,
