@@ -9,6 +9,12 @@ class AddProductInputModel extends AddProductInputEntity {
     required super.price,
     required super.isFeatured,
     required super.imageURL,
+    required super.expiryDateMonths,
+    required super.isOrganic,
+    required super.numberOfCalories,
+    required super.unitAmount,
+    required super.avgRating,
+    required super.numberOfRatings,
   });
 
   factory AddProductInputModel.fromEntity(
@@ -22,6 +28,12 @@ class AddProductInputModel extends AddProductInputEntity {
       price: addProductInputEntity.price,
       isFeatured: addProductInputEntity.isFeatured,
       imageURL: addProductInputEntity.imageURL,
+      expiryDateMonths: addProductInputEntity.expiryDateMonths,
+      isOrganic: addProductInputEntity.isOrganic,
+      numberOfCalories: addProductInputEntity.numberOfCalories,
+      unitAmount: addProductInputEntity.unitAmount,
+      avgRating: addProductInputEntity.avgRating,
+      numberOfRatings: addProductInputEntity.numberOfRatings,
     );
   }
   toMap() => {
@@ -31,5 +43,11 @@ class AddProductInputModel extends AddProductInputEntity {
     "imageURL": imageURL,
     "price": price,
     "isFeatured": isFeatured,
+    "expiryDateMonths": expiryDateMonths,
+    "isOrganic": isOrganic,
+    "numberOfCalories": numberOfCalories,
+    "unitAmount": unitAmount,
+    "avgRating": avgRating,
+    "numberOfRatings": numberOfRatings,
   };
 }
