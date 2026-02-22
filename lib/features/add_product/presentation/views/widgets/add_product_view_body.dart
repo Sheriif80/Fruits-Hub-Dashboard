@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub_dashboard/core/utils/app_snackbars.dart';
 import 'package:fruits_hub_dashboard/core/widgets/custom_button.dart';
 import 'package:fruits_hub_dashboard/core/widgets/custom_text_form_field.dart';
-import 'package:fruits_hub_dashboard/features/add_product/domain/entities/add_product_input_entity.dart';
+import 'package:fruits_hub_dashboard/features/add_product/domain/entities/product_entity.dart';
 import 'package:fruits_hub_dashboard/features/add_product/presentation/managers/cubits/add_product/add_product_cubit.dart';
 import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/image_field.dart';
 import 'package:fruits_hub_dashboard/features/add_product/presentation/views/widgets/is_featured_product.dart';
@@ -151,22 +151,21 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                   if (fileImage != null) {
                     if (formKey.currentState!.validate()) {
                       formKey.currentState!.save();
-                      final AddProductInputEntity productInputEntity =
-                          AddProductInputEntity(
-                            code: productCode!,
-                            name: productName!,
-                            description: productDescription!,
-                            price: productPrice,
-                            image: fileImage!,
-                            isFeatured: isFeatured,
-                            isOrganic: isOrganic,
-                            expiryDateMonths: expiryDateMonths,
-                            numberOfCalories: numberOfCalories,
-                            unitAmount: unitAmount,
-                            avgRating: avgRating,
-                            numberOfRatings: numberOfRatings,
-                            reviews: [],
-                          );
+                      final ProductEntity productInputEntity = ProductEntity(
+                        code: productCode!,
+                        name: productName!,
+                        description: productDescription!,
+                        price: productPrice,
+                        image: fileImage!,
+                        isFeatured: isFeatured,
+                        isOrganic: isOrganic,
+                        expiryDateMonths: expiryDateMonths,
+                        numberOfCalories: numberOfCalories,
+                        unitAmount: unitAmount,
+                        avgRating: avgRating,
+                        numberOfRatings: numberOfRatings,
+                        reviews: [],
+                      );
                       BlocProvider.of<AddProductCubit>(
                         context,
                       ).addProduct(productInputEntity);
