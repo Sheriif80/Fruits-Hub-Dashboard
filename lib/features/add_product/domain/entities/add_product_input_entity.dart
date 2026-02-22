@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:fruits_hub_dashboard/features/add_product/domain/entities/review_entity.dart';
+
 class AddProductInputEntity {
   final String code;
   final String name;
@@ -14,6 +16,7 @@ class AddProductInputEntity {
   final int unitAmount;
   final num avgRating;
   final int numberOfRatings;
+  final List<ReviewEntity> reviews;
 
   AddProductInputEntity({
     required this.code,
@@ -29,5 +32,6 @@ class AddProductInputEntity {
     required this.unitAmount,
     required this.avgRating,
     required this.numberOfRatings,
+    required this.reviews,
   });
 }

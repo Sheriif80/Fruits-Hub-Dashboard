@@ -1,20 +1,39 @@
+import 'dart:io';
+
+import 'package:fruits_hub_dashboard/features/add_product/data/models/review_model.dart';
 import 'package:fruits_hub_dashboard/features/add_product/domain/entities/add_product_input_entity.dart';
 
-class AddProductInputModel extends AddProductInputEntity {
+class AddProductInputModel {
+  final String code;
+  final String name;
+  final String description;
+  final File image;
+  final num price;
+  final bool isFeatured;
+  final String? imageURL;
+  final int expiryDateMonths;
+  final bool isOrganic;
+  final int numberOfCalories;
+  final int unitAmount;
+  final num avgRating;
+  final int numberOfRatings;
+  final List<ReviewModel> reviews;
+
   AddProductInputModel({
-    required super.code,
-    required super.name,
-    required super.description,
-    required super.image,
-    required super.price,
-    required super.isFeatured,
-    required super.imageURL,
-    required super.expiryDateMonths,
-    required super.isOrganic,
-    required super.numberOfCalories,
-    required super.unitAmount,
-    required super.avgRating,
-    required super.numberOfRatings,
+    required this.code,
+    required this.name,
+    required this.description,
+    required this.image,
+    required this.price,
+    required this.isFeatured,
+    required this.imageURL,
+    required this.expiryDateMonths,
+    required this.isOrganic,
+    required this.numberOfCalories,
+    required this.unitAmount,
+    required this.avgRating,
+    required this.numberOfRatings,
+    required this.reviews,
   });
 
   factory AddProductInputModel.fromEntity(
@@ -34,6 +53,9 @@ class AddProductInputModel extends AddProductInputEntity {
       unitAmount: addProductInputEntity.unitAmount,
       avgRating: addProductInputEntity.avgRating,
       numberOfRatings: addProductInputEntity.numberOfRatings,
+      reviews: addProductInputEntity.reviews
+          .map((e) => ReviewModel.fromEntity(e))
+          .toList(),
     );
   }
   toMap() => {
@@ -49,5 +71,6 @@ class AddProductInputModel extends AddProductInputEntity {
     "unitAmount": unitAmount,
     "avgRating": avgRating,
     "numberOfRatings": numberOfRatings,
+    "reviews": reviews.map((e) => e.toJson()).toList(),
   };
 }

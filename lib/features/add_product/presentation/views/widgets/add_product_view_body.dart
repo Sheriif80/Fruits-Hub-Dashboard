@@ -165,6 +165,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                             unitAmount: unitAmount,
                             avgRating: avgRating,
                             numberOfRatings: numberOfRatings,
+                            reviews: [],
                           );
                       BlocProvider.of<AddProductCubit>(
                         context,
