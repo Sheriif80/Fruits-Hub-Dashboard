@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_hub_dashboard/core/widgets/build_app_bar.dart';
 import 'package:fruits_hub_dashboard/features/orders/presentation/views/widgets/orders_view_body.dart';
 
 class OrdersView extends StatelessWidget {
@@ -6,6 +7,9 @@ class OrdersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: OrdersViewBody());
+    return Scaffold(
+      appBar: buildAppBar(title: 'Orders'),
+      body: const OrdersViewBody(),
+    );
   }
 }
