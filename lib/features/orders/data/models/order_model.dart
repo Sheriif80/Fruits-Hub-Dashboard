@@ -7,6 +7,7 @@ class OrderModel {
   final ShippingAddressModel shippingAddress;
   final double totalPrice;
   final String paymentMethod;
+  final String? status;
   final List<OrderedProductModel> orderedProducts;
 
   OrderModel({
@@ -14,6 +15,7 @@ class OrderModel {
     required this.shippingAddress,
     required this.totalPrice,
     required this.paymentMethod,
+    required this.status,
     required this.orderedProducts,
   });
 
@@ -22,6 +24,7 @@ class OrderModel {
     shippingAddress: ShippingAddressModel.fromJson(json["shippingAddress"]),
     totalPrice: json["totalPrice"].toDouble(),
     paymentMethod: json["paymentMethod"],
+    status: json["status"],
     orderedProducts: List<OrderedProductModel>.from(
       json["orderedProducts"].map((x) => OrderedProductModel.fromJson(x)),
     ),
@@ -32,6 +35,7 @@ class OrderModel {
     shippingAddress: shippingAddress.toEntity(),
     totalPrice: totalPrice,
     paymentMethod: paymentMethod,
+    status: status,
     orderedProducts: orderedProducts.map((e) => e.toEntity()).toList(),
   );
 

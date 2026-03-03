@@ -93,6 +93,25 @@ class OrderCard extends StatelessWidget {
                     style: const TextStyle(fontSize: 12, color: Colors.grey),
                   ),
                 ),
+
+              const Divider(height: 20),
+
+              /// 🔹 Order Status
+              order.status != null
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          order.status!,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    )
+                  : SizedBox(),
             ],
           ),
         ),

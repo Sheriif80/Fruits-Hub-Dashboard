@@ -6,6 +6,7 @@ class OrderEntity {
   final ShippingAddressEntity shippingAddress;
   final double totalPrice;
   final String paymentMethod;
+  final String? status;
   final List<OrderedProductEntity> orderedProducts;
 
   OrderEntity({
@@ -13,6 +14,7 @@ class OrderEntity {
     required this.shippingAddress,
     required this.totalPrice,
     required this.paymentMethod,
+    required this.status,
     required this.orderedProducts,
   });
 }

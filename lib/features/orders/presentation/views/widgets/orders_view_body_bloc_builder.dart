@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fruits_hub_dashboard/core/helpers/get_dummy_data.dart';
@@ -19,7 +17,6 @@ class OrdersViewBodyBlocBuilder extends StatelessWidget {
             child: OrdersViewBody(orders: DummyOrders.orders),
           );
         } else if (state is GetOrdersSuccess) {
-          log(state.orders.length.toString());
           return OrdersViewBody(orders: state.orders);
         } else if (state is GetOrdersError) {
           return Center(child: Text(state.message));
