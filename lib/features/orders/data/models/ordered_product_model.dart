@@ -1,3 +1,5 @@
+import 'package:fruits_hub_dashboard/features/orders/domain/entities/ordered_product_entity.dart';
+
 class OrderedProductModel {
   final String code;
   final String name;
@@ -18,6 +20,13 @@ class OrderedProductModel {
         quantity: json['quantity'],
         price: json['price'],
       );
+
+  OrderedProductEntity toEntity() => OrderedProductEntity(
+    code: code,
+    name: name,
+    quantity: quantity,
+    price: price,
+  );
 
   toJson() => {
     'code': code,

@@ -1,5 +1,6 @@
 import 'package:fruits_hub_dashboard/features/orders/data/models/ordered_product_model.dart';
 import 'package:fruits_hub_dashboard/features/orders/data/models/shipping_address_model.dart';
+import 'package:fruits_hub_dashboard/features/orders/domain/entities/order_entity.dart';
 
 class OrderModel {
   final String userID;
@@ -24,6 +25,14 @@ class OrderModel {
     orderedProducts: List<OrderedProductModel>.from(
       json["orderedProducts"].map((x) => OrderedProductModel.fromJson(x)),
     ),
+  );
+
+  toEntity() => OrderEntity(
+    userID: userID,
+    shippingAddress: shippingAddress.toEntity(),
+    totalPrice: totalPrice,
+    paymentMethod: paymentMethod,
+    orderedProducts: orderedProducts.map((e) => e.toEntity()).toList(),
   );
 
   toJson() => {
