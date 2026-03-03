@@ -16,8 +16,8 @@ class OrdersRepoImpl implements OrdersRepo {
       final data = await databaseService.getData(
         path: AppEndPoints.ordersCollection,
       );
-      final List<OrderEntity> orders = data
-          .map((e) => OrderModel.fromJson(e).toEntity())
+      final List<OrderEntity> orders = (data as List<dynamic>)
+          .map<OrderEntity>((e) => OrderModel.fromJson(e).toEntity())
           .toList();
       return Right(orders);
     } catch (e) {
