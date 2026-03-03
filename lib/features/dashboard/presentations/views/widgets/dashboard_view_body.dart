@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/core/routing/app_routes.dart';
 import 'package:fruits_hub_dashboard/core/widgets/custom_button.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 class DashboardViewBody extends StatelessWidget {
@@ -17,6 +18,13 @@ class DashboardViewBody extends StatelessWidget {
             text: "Add Data",
             onPressed: () {
               GoRouter.of(context).pushNamed(AppRoutes.addProductView);
+            },
+          ),
+          Gap(25),
+          CustomButton(
+            text: "View Orders",
+            onPressed: () {
+              GoRouter.of(context).pushNamed(AppRoutes.ordersView);
             },
           ),
         ],
