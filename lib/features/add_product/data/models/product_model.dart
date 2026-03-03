@@ -18,6 +18,7 @@ class ProductModel {
   final num avgRating;
   final int numberOfRatings;
   final List<ReviewModel> reviews;
+  final int sellingCount;
 
   ProductModel({
     required this.code,
@@ -34,6 +35,7 @@ class ProductModel {
     required this.avgRating,
     required this.numberOfRatings,
     required this.reviews,
+    this.sellingCount = 0,
   });
 
   factory ProductModel.fromEntity(ProductEntity addProductInputEntity) {
@@ -70,5 +72,6 @@ class ProductModel {
     "avgRating": avgRating,
     "numberOfRatings": numberOfRatings,
     "reviews": reviews.map((e) => e.toJson()).toList(),
+    "sellingCount": sellingCount,
   };
 }
