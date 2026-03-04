@@ -104,15 +104,17 @@ class OrderCard extends StatelessWidget {
                       children: [
                         Text(
                           order.status!,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 12,
-                            color: Colors.green,
+                            color: order.status == "Delivered"
+                                ? Colors.green
+                                : Colors.red,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
               const Divider(height: 20),
               OrderActionButtons(orderEntity: order),
             ],

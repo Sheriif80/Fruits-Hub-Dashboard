@@ -8,6 +8,7 @@ class DummyOrders {
       userID: "U1001",
       totalPrice: 350,
       paymentMethod: "Cash On Delivery",
+      orderID: "O1001",
       status: "Pending",
       shippingAddress: ShippingAddressEntity(
         fullName: "Ahmed Mohamed",
@@ -44,7 +45,7 @@ class DummyOrders {
       totalPrice: 180,
       paymentMethod: "Credit Card",
       status: "Pending",
-
+      orderID: "O1002",
       shippingAddress: ShippingAddressEntity(
         fullName: "Sara Ali",
         email: "sara@gmail.com",
@@ -74,7 +75,7 @@ class DummyOrders {
       totalPrice: 520,
       paymentMethod: "Vodafone Cash",
       status: "Pending",
-
+      orderID: "O1003",
       shippingAddress: ShippingAddressEntity(
         fullName: "Omar Hassan",
         email: "omar@gmail.com",
