@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_hub_dashboard/features/orders/domain/entities/order_entity.dart';
+import 'package:fruits_hub_dashboard/features/orders/presentation/views/widgets/order_action_buttons.dart';
 
 class OrderCard extends StatelessWidget {
   final OrderEntity order;
@@ -112,6 +113,8 @@ class OrderCard extends StatelessWidget {
                       ],
                     )
                   : SizedBox(),
+              const Divider(height: 20),
+              OrderActionButtons(orderEntity: order),
             ],
           ),
         ),
