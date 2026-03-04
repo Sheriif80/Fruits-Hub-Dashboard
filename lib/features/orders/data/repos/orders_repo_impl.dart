@@ -11,17 +11,19 @@ class OrdersRepoImpl implements OrdersRepo {
 
   OrdersRepoImpl({required this.databaseService});
   @override
-  Future<Either<Failures, List<OrderEntity>>> getOrders() async {
+  Stream<Either<Failures, List<OrderEntity>>> getOrders() async* {
     try {
-      final data = await databaseService.getData(
+      final result = databaseService.getStreamData(
         path: AppEndPoints.ordersCollection,
       );
-      final List<OrderEntity> orders = (data as List<dynamic>)
-          .map<OrderEntity>((e) => OrderModel.fromJson(e).toEntity())
-          .toList();
-      return Right(orders);
+      await for (final snapshot in result) {
+        final orders = (snapshot as List<Map<String, dynamic>>)
+            .map<OrderEntity>((e) => OrderModel.fromJson(e).toEntity())
+            .toList();
+        yield Right(orders);
+      }
     } catch (e) {
-      return Left(ServerFailure(e.toString()));
+      yield Left(ServerFailure(e.toString()));
     }
   }
 }

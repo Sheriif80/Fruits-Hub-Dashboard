@@ -9,12 +9,17 @@ class GetOrdersCubit extends Cubit<GetOrdersState> {
   GetOrdersCubit(this.ordersRepo) : super(GetOrdersInitial());
   final OrdersRepo ordersRepo;
 
-  Future<void> getOrders() async {
+  void getOrders() async {
     emit(GetOrdersLoading());
-    final result = await ordersRepo.getOrders();
-    result.fold(
-      (err) => emit(GetOrdersError(err.message)),
-      (orders) => emit(GetOrdersSuccess(orders)),
-    );
+    await for (final result in ordersRepo.getOrders()) {
+      result.fold(
+        (err) {
+          emit(GetOrdersError(err.message));
+        },
+        (orders) {
+          emit(GetOrdersSuccess(orders));
+        },
+      );
+    }
   }
 }
