@@ -1,4 +1,3 @@
-```markdown
 # Fruits Hub Dashboard ⚙️📊
 
 A comprehensive administrative control panel built with Flutter to manage the Fruits E-Commerce ecosystem. This dashboard empowers store managers to easily control inventory, upload product images, and track customer orders in real-time.
