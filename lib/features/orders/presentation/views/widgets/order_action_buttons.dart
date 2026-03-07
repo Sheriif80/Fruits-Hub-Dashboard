@@ -16,7 +16,7 @@ class OrderActionButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Visibility(
-          visible: orderEntity.status == "Pending",
+          visible: orderEntity.status == "pending",
           child: ElevatedButton(
             onPressed: () {
               context.read<UpdateOrderCubit>().updateOrder(
@@ -28,11 +28,11 @@ class OrderActionButtons extends StatelessWidget {
           ),
         ),
         Visibility(
-          visible: orderEntity.status == "Pending",
+          visible: orderEntity.status == "pending",
           child: const Gap(10),
         ),
         Visibility(
-          visible: orderEntity.status == "Pending",
+          visible: orderEntity.status == "pending",
           child: ElevatedButton(
             onPressed: () {
               context.read<UpdateOrderCubit>().updateOrder(
