@@ -22,11 +22,11 @@ class AddProductViewBody extends StatefulWidget {
 class _AddProductViewBodyState extends State<AddProductViewBody> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   late String? productCode, productName, productDescription;
-  late num productPrice, avgRating;
+  late num productPrice;
   File? fileImage;
   bool isFeatured = false;
   bool isOrganic = false;
-  late int expiryDateMonths, numberOfCalories, unitAmount, numberOfRatings;
+  late int expiryDateMonths, numberOfCalories, unitAmount;
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
@@ -91,24 +91,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
               ),
 
               const Gap(12),
-              CustomTextFormField(
-                onSaved: (value) {
-                  avgRating = num.parse(value!);
-                },
-                hintText: ' Average Rating',
-                keyboardType: TextInputType.number,
-              ),
 
-              const Gap(12),
-              CustomTextFormField(
-                onSaved: (value) {
-                  numberOfRatings = int.parse(value!);
-                },
-                hintText: ' Number of Ratings',
-                keyboardType: TextInputType.number,
-              ),
-
-              const Gap(12),
               CustomTextFormField(
                 onSaved: (value) {
                   productDescription = value;
@@ -153,9 +136,6 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                         expiryDateMonths: expiryDateMonths,
                         numberOfCalories: numberOfCalories,
                         unitAmount: unitAmount,
-                        avgRating: avgRating,
-                        numberOfRatings: numberOfRatings,
-                        reviews: [],
                       );
                       BlocProvider.of<AddProductCubit>(
                         context,
