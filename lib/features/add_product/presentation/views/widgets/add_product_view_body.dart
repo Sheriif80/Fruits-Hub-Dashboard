@@ -63,16 +63,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 keyboardType: TextInputType.number,
               ),
               const Gap(12),
-              CustomTextFormField(
-                onSaved: (value) {
-                  productDescription = value;
-                },
-                maxLines: 5,
-                hintText: 'Product description',
-                keyboardType: TextInputType.text,
-              ),
 
-              const Gap(12),
               CustomTextFormField(
                 onSaved: (value) {
                   expiryDateMonths = int.parse(value!);
