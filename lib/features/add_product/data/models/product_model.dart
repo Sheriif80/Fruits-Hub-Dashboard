@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:fruits_hub_dashboard/features/add_product/data/models/review_model.dart';
 import 'package:fruits_hub_dashboard/features/add_product/domain/entities/product_entity.dart';
 
 class ProductModel {
@@ -15,10 +14,9 @@ class ProductModel {
   final bool isOrganic;
   final int numberOfCalories;
   final int unitAmount;
-  final num avgRating;
-  final int numberOfRatings;
-  final List<ReviewModel> reviews;
-  final int sellingCount;
+  num avgRating;
+  int numberOfRatings;
+  int sellingCount;
 
   ProductModel({
     required this.code,
@@ -32,9 +30,8 @@ class ProductModel {
     required this.isOrganic,
     required this.numberOfCalories,
     required this.unitAmount,
-    required this.avgRating,
-    required this.numberOfRatings,
-    required this.reviews,
+    this.avgRating = 0,
+    this.numberOfRatings = 0,
     this.sellingCount = 0,
   });
 
@@ -51,11 +48,6 @@ class ProductModel {
       isOrganic: addProductInputEntity.isOrganic,
       numberOfCalories: addProductInputEntity.numberOfCalories,
       unitAmount: addProductInputEntity.unitAmount,
-      avgRating: addProductInputEntity.avgRating,
-      numberOfRatings: addProductInputEntity.numberOfRatings,
-      reviews: addProductInputEntity.reviews
-          .map((e) => ReviewModel.fromEntity(e))
-          .toList(),
     );
   }
   toMap() => {
@@ -71,7 +63,6 @@ class ProductModel {
     "unitAmount": unitAmount,
     "avgRating": avgRating,
     "numberOfRatings": numberOfRatings,
-    "reviews": reviews.map((e) => e.toJson()).toList(),
     "sellingCount": sellingCount,
   };
 }
