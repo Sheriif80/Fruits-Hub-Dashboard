@@ -43,3 +43,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Senstive Keys
+lib/core/utils/app_keys.dart
