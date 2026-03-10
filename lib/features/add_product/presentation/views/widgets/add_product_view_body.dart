@@ -98,6 +98,7 @@ class _AddProductViewBodyState extends State<AddProductViewBody> {
                 },
                 hintText: 'Product description',
                 keyboardType: TextInputType.text,
+                maxLines: 5,
               ),
 
               const Gap(12),
