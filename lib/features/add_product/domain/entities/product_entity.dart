@@ -2,6 +2,7 @@ import 'dart:io';
 
 class ProductEntity {
   final String code;
+  String? productID;
   final String name;
   final String description;
   String? imageURL;
@@ -15,6 +16,7 @@ class ProductEntity {
 
   ProductEntity({
     required this.code,
+    this.productID,
     required this.name,
     required this.description,
     required this.image,

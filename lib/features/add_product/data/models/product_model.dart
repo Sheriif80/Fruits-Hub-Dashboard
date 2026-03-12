@@ -4,6 +4,7 @@ import 'package:fruits_hub_dashboard/features/add_product/domain/entities/produc
 
 class ProductModel {
   final String code;
+  String? productID;
   final String name;
   final String description;
   final File image;
@@ -20,6 +21,7 @@ class ProductModel {
 
   ProductModel({
     required this.code,
+    required this.productID,
     required this.name,
     required this.description,
     required this.image,
@@ -38,6 +40,7 @@ class ProductModel {
   factory ProductModel.fromEntity(ProductEntity addProductInputEntity) {
     return ProductModel(
       code: addProductInputEntity.code,
+      productID: addProductInputEntity.productID,
       name: addProductInputEntity.name,
       description: addProductInputEntity.description,
       image: addProductInputEntity.image,
@@ -52,6 +55,7 @@ class ProductModel {
   }
   toMap() => {
     "code": code,
+    "productID": productID,
     "name": name,
     "description": description,
     "imageURL": imageURL,
